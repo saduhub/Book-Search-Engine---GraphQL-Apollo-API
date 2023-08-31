@@ -11,10 +11,10 @@ module.exports = {
     });
 
     if (!foundUser) {
-      return res.status(400).json({ message: 'Cannot find a user with this id!' });
+      throw new Error({ message: 'Cannot find a user with this id!' });
     }
 
-    res.json(foundUser);
+    return (foundUser);
   },
   // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
   async createUser({ body }, res) {
@@ -66,8 +66,8 @@ module.exports = {
       { new: true }
     );
     if (!updatedUser) {
-      return res.status(404).json({ message: "Couldn't find user with this id!" });
+      throw new Error({ message: "Couldn't find user with this id!" });
     }
-    return res.json(updatedUser);
+    return (updatedUser);
   },
 };
