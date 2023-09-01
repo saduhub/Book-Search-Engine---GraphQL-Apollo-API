@@ -10,6 +10,13 @@ const typeDefs = gql`
     title: String!
   }
 
+  type User {
+    _id: ID!
+    username: String!
+    email: String!
+    savedBooks: [String]
+  } 
+
   type Query {
     books: [Book]
     me(token: String!): User
@@ -20,4 +27,4 @@ const typeDefs = gql`
   }
 `;
 
-module.exports = typeDefs;
+module.exports = { typeDefs };
