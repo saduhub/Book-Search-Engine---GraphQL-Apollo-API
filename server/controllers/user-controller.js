@@ -5,7 +5,7 @@ const { signToken } = require('../utils/auth');
 
 module.exports = {
   // get a single user by either their id or their username
-  async getSingleUser({ user = null, params }, res) {
+  async getSingleUser({ user = null, params }) {
     const foundUser = await User.findOne({
       $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
     });
@@ -59,7 +59,7 @@ module.exports = {
     }
   },
   // remove a book from `savedBooks`
-  async deleteBook({ user, params }, res) {
+  async deleteBook({ user, params }) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: user._id },
       { $pull: { savedBooks: { bookId: params.bookId } } },

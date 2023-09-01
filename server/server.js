@@ -3,12 +3,15 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 // Require the typedefs and resolvers/
-const { typeDefs, resolvers } = require('./schemas');
+const { typeDefs } = require('./controllers/typeDefs.js');
+console.log(typeDefs);
+const { resolvers } = require('./controllers/resolvers.js');
+console.log(resolvers);
 const db = require('./config/connection');
 const routes = require('./routes');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 // Pass typedefs and resolvers to Apollo server.
 const server = new ApolloServer({
   typeDefs,
